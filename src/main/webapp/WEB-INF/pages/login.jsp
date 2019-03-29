@@ -34,13 +34,13 @@
                     <div class="panel-body" style="padding:30px; padding-bottom:10px; padding-top:10px;">
                         <div class="form-group">
                             <div class="field field-icon-right">
-                                <input type="text" class="input input-big" name="name" placeholder="登录账号" data-validate="required:请填写账号" />
+                                <input id="loginId" type="text" class="input input-big" name="loginId" placeholder="登录账号" data-validate="required:请填写账号" />
                                 <span class="icon icon-user margin-small"></span>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="field field-icon-right">
-                                <input type="password" class="input input-big" name="password" placeholder="登录密码" data-validate="required:请填写密码" />
+                                <input id="passworld" type="password" class="input input-big" name="passworld" placeholder="登录密码" data-validate="required:请填写密码" />
                                 <span class="icon icon-key margin-small"></span>
                             </div>
                         </div>
@@ -48,12 +48,33 @@
                             <div class="field">
                                 <input type="text" class="input input-big" name="code" placeholder="填写右侧的验证码" data-validate="required:请填写右侧的验证码" />
                                 <img src="${bashpath}/images/passcode.jpg" alt="" width="100" height="32" class="passcode" style="height:43px;cursor:pointer;" onclick="this.src=this.src+'?'">
-
                             </div>
                         </div>
                     </div>
-                    <div style="padding:30px;"><input type="submit" class="button button-block bg-main text-big input-big" value="登录"></div>
+                    <div style="padding:30px;">
+                        <button id="btn" type="button" class="button button-block bg-main text-big input-big" value="登录">登录</button>
+                    </div>
                 </div>
+                <script>
+                    $(function () {
+                        $("#btn").click(function () {
+                            $.ajax({
+                                url:"${basepath}/user/login",
+                                type:"post",
+                                dataType:"json",
+                                data:{
+                                    loginId:$("#loginId").val(),
+                                    password:$("#passworld").val()
+                                },
+                                success:function (result) {
+                                    if(result.code==0){//result是一个json,编码为0时
+                                        alert(result.message);//弹出它的错误信息
+                                    }
+                                }
+                            })
+                        })
+                    })
+                </script>
             </form>
         </div>
     </div>
