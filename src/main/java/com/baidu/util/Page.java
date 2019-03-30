@@ -2,16 +2,15 @@ package com.baidu.util;
 
 import lombok.Data;
 
-/**
- * 建立一个消息类
- */
 @Data
 public class Page {
-    private Integer code;//编码:成功为1,不成功为0
-    private Object message;//消息:如果成功了,返回一些东西,如果是查询会放一些查询的信息
-
-    public Page(Integer code, Object message) {
-        this.code = code;
-        this.message = message;
+    private Integer pageNo=1;
+    private Integer pageSize=10;
+    /*
+     *   withPage 该值如果为0则不分页  如果为1 则分页
+     * */
+    private Integer withPage=1;
+    public int getPageStart(){
+        return (pageNo-1)*pageSize;
     }
 }

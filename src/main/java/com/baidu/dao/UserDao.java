@@ -1,6 +1,6 @@
 package com.baidu.dao;
 
-import org.apache.catalina.User;
+import com.baidu.pojo.User;
 
 import java.util.List;
 

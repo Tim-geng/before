@@ -2,9 +2,10 @@ package com.baidu.pojo;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import com.baidu.util.Page;
+import lombok.Data;
 
 import java.util.Date;
-
+@Data
 public class User extends Page {
     private Integer id;
     private String loginId;
@@ -18,7 +19,4 @@ public class User extends Page {
     private String address;
     private Integer isDel;
 
-    public User(Integer code, Object message) {
-        super(code, message);
-    }
 }
